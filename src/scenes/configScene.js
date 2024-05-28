@@ -35,6 +35,7 @@ const configScene = new Scenes.WizardScene(
                         const updatedUser = await configUser(userId, changedUserData);
                         ctx.reply('Bot was successfully configured!');
                         ctx.session.userData = updatedUser;
+
                         return ctx.scene.leave();
                     },
                     buttonModeOptions: {
