@@ -8,7 +8,6 @@ const addMessageToSession = (ctx, messages) => {
         ctx.session.history.shift();
     }
     ctx.session.history.push(...messages);
-    console.log(ctx.session.history)
 }
 
 const initializeUserInSession = async (ctx) => {
