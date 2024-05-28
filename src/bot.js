@@ -7,11 +7,14 @@ const dotenv = require('dotenv');
 const configScene = require('./scenes/configScene.js');
 const { initializeUserInSession, addMessageToSession } = require('./service/session-service.js');
 const { getReplyFromChatGpt } = require('./service/chatgpt-service.js');
+const express = require('express');
 
 dotenv.config();
 connectDB();
 
 const token = process.env.TELEGRAM_BOT_TOKEN; 
+const app = express();
+const port = 3000;
 
 const stage = new Scenes.Stage([configScene], { ttl: 60 });
 const bot = new Telegraf(token);
@@ -75,4 +78,12 @@ bot.on('message', async (ctx) => {
 
 bot.launch().then(() => {
     console.log('Bot is running.');
+});
+
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+  });
+  
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
