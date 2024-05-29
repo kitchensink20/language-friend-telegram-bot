@@ -25,8 +25,25 @@ bot.command('start', async (ctx) => {
     const user = ctx.from;
     await createUserIfNotExist(user);
     await initializeUserInSession(ctx);
-    bot.telegram.sendMessage(ctx.chat.id, messages.welcome);
+    bot.telegram.sendMessage(ctx.chat.id, messages.welcome, {
+        reply_markup: {
+            inline_keyboard: [
+                [{ 
+                    text: 'Config', 
+                    callback_data: 'execute_config' 
+                }]
+            ]
+        }
+    });
 });
+
+bot.on('callback_query', (ctx) => {
+    const data = ctx.callbackQuery.data;
+    if (data === 'execute_config') {
+        clearSessionHistory(ctx);
+        ctx.scene.enter(constants.Scenes.CONFIG_SCENE);
+    }
+})
 
 bot.command('config', async (ctx) => {
     clearSessionHistory(ctx);
