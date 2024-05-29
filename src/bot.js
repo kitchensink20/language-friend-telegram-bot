@@ -5,7 +5,7 @@ const messages = require('../messages');
 const constants = require('./constants.js');
 const dotenv = require('dotenv');
 const configScene = require('./scenes/configScene.js');
-const { initializeUserInSession, addMessageToSession } = require('./service/session-service.js');
+const { initializeUserInSession, addMessageToSession, clearSessionHistory } = require('./service/session-service.js');
 const { getReplyFromChatGpt } = require('./service/chatgpt-service.js');
 const express = require('express');
 
@@ -29,6 +29,7 @@ bot.command('start', async (ctx) => {
 });
 
 bot.command('config', async (ctx) => {
+    clearSessionHistory(ctx);
     ctx.scene.enter(constants.Scenes.CONFIG_SCENE);
 });
 
