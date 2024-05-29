@@ -2,7 +2,7 @@
 
 LingoBuddy is a Telegram bot designed to help users practice and improve their language skills by engaging in friendly and interactive conversations. Leveraging the power of the ChatGPT API, LingoBuddy offers a customizable and immersive language learning experience.
 
-__Check out here:__ *t.me/your_lingo_buddy_bot*
+__Check out here:__ *[t.me/your_lingo_buddy_bot](t.me/your_lingo_buddy_bot)*
 
 ### Built with
 
