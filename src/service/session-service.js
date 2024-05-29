@@ -16,7 +16,12 @@ const initializeUserInSession = async (ctx) => {
     ctx.session.userData = user;
 }
 
+const clearSessionHistory = (ctx) => {
+    ctx.session.history = [];
+}
+
 module.exports = {
     addMessageToSession,
     initializeUserInSession,
+    clearSessionHistory,
 }

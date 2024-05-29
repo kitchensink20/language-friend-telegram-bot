@@ -4,6 +4,8 @@ const { Pagination } =  require('telegraf-pagination');
 const messages = require('../../messages.json');
 const constants = require('../constants.js');
 const dotenv = require('dotenv');
+const { getWelcomingMessageFromChatGpt } = require('../service/chatgpt-service.js');
+const { addMessageToSession } = require('../service/session-service.js');
 
 dotenv.config();
 
@@ -35,6 +37,10 @@ const configScene = new Scenes.WizardScene(
                         const updatedUser = await configUser(userId, changedUserData);
                         ctx.reply('Bot was successfully configured!');
                         ctx.session.userData = updatedUser;
+                        
+                        const chatGptReply = await getWelcomingMessageFromChatGpt(ctx.session.data.studying_language);
+                        ctx.reply(chatGptReply.content);
+                        addMessageToSession(ctx, [chatGptReply]);
 
                         return ctx.scene.leave();
                     },
