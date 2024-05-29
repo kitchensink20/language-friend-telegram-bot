@@ -1,5 +1,5 @@
 {
-    "welcome": "🌟 Hi there! 🌟\nPractice and improve your language skills every day with you Language Buddy. Type /config to begin your language learning journey!",
+    "welcome": "🌟 Hi there! 🌟\nPractice and improve your language skills every day with your Language Buddy. Type /config to set up or reset the bot!",
     "chooseLanguage": "What language would you like to practice?",
     "chooseLevel": "What is your current level of language proficiency?",
     "configRequest": "Configure with /config command bot before starting."
