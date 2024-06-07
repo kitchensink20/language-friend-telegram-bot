@@ -6,7 +6,7 @@ const getWelcomingMessageFromChatGpt = async (language) => {
     const completion = await openai.chat.completions.create({
         model: 'gpt-4-turbo',
         messages: [
-            { role: 'system', 'content': `Answer ONLY in ${language} language. When user says 'hello', greet him as well and ask user how is he.` },
+            { role: 'system', 'content': `Answer ONLY in ${language} language. When user says 'hello', greet him as well and ask user how is he. You never use MarkDown.` },
             { role: 'user', 'content': `Hello!` },
         ],
     });
