@@ -18,7 +18,7 @@ const port = 3000;
 
 const stage = new Scenes.Stage([configScene], { ttl: 60 });
 const bot = new Telegraf(token);
-bot.use(session({ ttl: 1200 }));
+bot.use(session());
 bot.use(stage.middleware());
 
 bot.command('start', async (ctx) => {
